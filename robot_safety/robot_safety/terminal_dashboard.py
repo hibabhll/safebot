@@ -11,7 +11,6 @@ class TerminalDashboard(Node):
         super().__init__('terminal_dashboard')
         self.console = Console()
         
-        # 1. Mémoire du Dashboard (L'état l'7ali)
         self.battery = 100.0
         self.temp = 30.0
         self.cpu = 50.0
