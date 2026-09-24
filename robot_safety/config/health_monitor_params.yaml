@@ -1,0 +1,6 @@
+health_monitor:
+  ros__parameters:
+    temp_warn: 60.0
+    temp_crit: 75.0
+    batt_warn: 30.0
+    batt_crit: 15.0
