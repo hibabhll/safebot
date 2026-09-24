@@ -12,15 +12,14 @@ class DataLogger(Node):
         super().__init__('data_logger')
         self.last_status = 'NORMAL'
 
-        # Dossier mte3 l'logs f dar (home)
+        
         self.log_dir = os.path.expanduser('~/robot_logs')
         os.makedirs(self.log_dir, exist_ok=True)
 
-        # Ism l'fichier b l'wa9t (kol session = fichier jdid)
+        
         filename = datetime.now().strftime('session_%Y%m%d_%H%M%S.csv')
         self.filepath = os.path.join(self.log_dir, filename)
 
-        # N7ellou l'fichier w nktebou l'titre mte3 l'colonnes
         self.file = open(self.filepath, 'w', newline='')
         self.writer = csv.writer(self.file)
         self.writer.writerow(['timestamp', 'battery', 'temp', 'cpu', 'status'])
@@ -32,7 +31,7 @@ class DataLogger(Node):
         self.get_logger().info(f'Data Logger demarre! Fichier: {self.filepath}')
 
     def sensor_cb(self, msg):
-        # Kol message = sطر jdid f l'CSV
+        
         self.writer.writerow([
             msg.timestamp,
             f'{msg.battery_level:.1f}',
@@ -40,7 +39,7 @@ class DataLogger(Node):
             f'{msg.cpu_load:.1f}',
             self.last_status
         ])
-        self.file.flush()   # ⚡ Nktebou 3la l'disque FAWRAN (ken l'PC ytafi, ma ndhay3ouch l'données!)
+        self.file.flush()  
 
     def status_cb(self, msg):
         self.last_status = msg.data
@@ -54,7 +53,7 @@ def main(args=None):
     except KeyboardInterrupt:
         pass
     finally:
-        node.file.close()   # Nghal9ou l'fichier b adab 9bal ma nemchiw
+        node.file.close()   
         rclpy.shutdown()
 
 
