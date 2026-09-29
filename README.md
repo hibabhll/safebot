@@ -1,4 +1,4 @@
-# 🤖 SafeBot — ROS 2
+# SafeBot — ROS 2
 
 > Real-time health monitoring and autonomous safety system for industrial robots.  
 > Built with **ROS 2 Lyrical** · **Python 3** · **Rich** · **rosbag2**
